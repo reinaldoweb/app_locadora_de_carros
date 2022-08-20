@@ -33,4 +33,8 @@ class Marca extends Model
             'imagem.mimes' => 'Verifique a extenção do arquivo.'
         ];
     }
+
+    public function modelos(){
+        return $this->hasMany('App\Models\Modelo');
+    }
 }
