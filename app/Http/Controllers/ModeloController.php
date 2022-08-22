@@ -18,9 +18,16 @@ class ModeloController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response()->json($this->modelo->with('marca')->get(), 200);
+        $modelo = array();
+        if ($request->has('atributos')) {
+            $atributos = $request->atributos;
+            $modelos = $this->modelo->selectRaw($atributos)->with('marca')->get();
+        } else {
+            $modelos = $this->modelo->with('marca')->get();
+        }
+        return response()->json($modelos, 200);
     }
 
     /**
@@ -155,16 +162,14 @@ class ModeloController extends Controller
     {
         $modelo = $this->modelo->find($id);
 
-        if ($modelo === null)
-        {
+        if ($modelo === null) {
             return response()->json(['msg' => 'Não é possivel deletar. Recurso não existe'], 404);
         }
 
-            //Remove o arquivo antigo.
-            Storage::disk('public')->delete($modelo->imagem);
+        //Remove o arquivo antigo.
+        Storage::disk('public')->delete($modelo->imagem);
 
         $modelo->delete();
         return response()->json(['msg' => 'O modelo foi deletado com sucesso!'], 200);
-
     }
 }
