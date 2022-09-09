@@ -5549,12 +5549,12 @@ var staticRenderFns = [function () {
     staticClass: "card-header"
   }, [_vm._v("Bem-vindo")]), _vm._v(" "), _c("div", {
     staticClass: "card-body"
-  }, [_c("p", [_vm._v("Apresenta indicadores do sistema")]), _vm._v(" "), _c("div", {
+  }, [_c("div", {
     staticClass: "alert alert-success",
     attrs: {
       role: "alert"
     }
-  }, [_vm._v("\n                        Teste ")])])])])])]);
+  }, [_c("p", [_vm._v("Apresenta indicadores do sistema")])])])])])])]);
 }];
 render._withStripped = true;
 
