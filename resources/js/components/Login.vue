@@ -69,9 +69,9 @@
         methods: {
             login(e) {
 
-                let url = 'http://127.0.0.1:8000/api/login'
+                let url = 'http://localhost:8000/api/login'
                 let configuracao = {
-                    method: 'POST',
+                    method: 'post',
                     body: new URLSearchParams({
                         'email': this.email,
                         'password': this.password
@@ -79,7 +79,7 @@
                 }
 
                 fetch(url, configuracao)
-                    .then(response => response.json())//Converte resposta em json
+                    .then(response => response.json())
                     .then(data => {
                         if(data.token) {
                             document.cookie = 'token='+data.token+';SameSite=Lax'

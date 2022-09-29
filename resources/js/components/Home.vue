@@ -4,12 +4,9 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Bem-vindo</div>
+
                     <div class="card-body">
-
-                        <div class="alert alert-success" role="alert">
-                            <p>Apresenta indicadores do sistema</p>
-                        </div>
-
+                        <p>Apresentar indicadores do sistema</p>
                     </div>
                 </div>
             </div>
