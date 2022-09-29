@@ -27,12 +27,10 @@
 export default {
     props: ["dados", "titulos"],
     computed: {
-
         dadosFiltrados() {
 
             let campos = Object.keys(this.titulos)
             let dadosFiltrados = []
-
 
             this.dados.map((item, chave) => {
                 let itemFiltrado = {}
