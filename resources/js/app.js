@@ -7,6 +7,16 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import Vuex from 'vuex'
+Vue.use(Vuex)
+
+
+const store = new Vuex.Store({
+    state:{
+        teste: 'Teste de recuperação de valor da store do Vuex'
+    }
+})
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,4 +49,5 @@ Vue.component('paginate-component', require('./components/Paginate.vue').default
 
 const app = new Vue({
     el: '#app',
+    store
 });
