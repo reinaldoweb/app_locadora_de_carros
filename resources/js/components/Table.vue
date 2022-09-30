@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     <th scope="col" v-for="t, key in titulos" :key="key" class="text-uppercase">{{t.titulo}}</th>
-                    <th v-if="atualizar || visualizar || remover"></th>
+                    <th v-if="atualizar .visivel|| visualizar || remover"></th>
                 </tr>
             </thead>
             <tbody>
@@ -16,8 +16,10 @@
                             <img :src="'/storage/'+ valor" width="30" height="30">
                         </span>
                     </td>
-                    <td v-if="atualizar || visualizar || remover">
-                        <button v-if="visualizar" class="btn btn-outline-primary btn-sm">Visualizar</button>
+                    <td v-if="atualizar.visivel || visualizar || remover">
+                        <button v-if="visualizar.visivel" class="btn btn-outline-primary btn-sm"
+                        :data-toggle="visualizar.dataToggle"
+                        :data-target="visualizar.dataTarget">Visualizar</button>
                         <button v-if="atualizar" class="btn btn-outline-primary btn-sm">Atualizar</button>
                         <button v-if="remover" class="btn btn-outline-danger btn-sm">Remover</button>
                     </td>

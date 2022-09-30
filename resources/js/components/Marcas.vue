@@ -38,15 +38,15 @@
                     <template v-slot:conteudo>
                         <table-component
                         :dados="marcas.data"
-                        :visualizar="true"
+                        :visualizar="{visivel:true, dataToggle: 'modal', dataTarget:'#modalMarcaVisualizar'}"
                         :atualizar="true"
                         :remover="true"
-                        :titulos="{
-                            id: {titulo: 'ID', tipo: 'text'},
-                            nome: {titulo: 'Nome', tipo: 'text'},
-                            imagem: {titulo: 'Imagem', tipo: 'imagem'},
-                            created_at: {titulo: 'Criação', tipo: 'data'},
-                        }"></table-component>
+                            :titulos="{
+                                id: {titulo: 'ID', tipo: 'text'},
+                                nome: {titulo: 'Nome', tipo: 'text'},
+                                imagem: {titulo: 'Imagem', tipo: 'imagem'},
+                                created_at: {titulo: 'Criação', tipo: 'data'},
+                            }"></table-component>
                     </template>
 
                     <template v-slot:rodape>
@@ -73,7 +73,7 @@
             </div>
         </div>
 
-
+        <!-- Inicio do modal de inclusão de marca -->
 
         <modal-component id="modalMarca" titulo="Adicionar marca">
 
@@ -109,6 +109,21 @@
                 <button type="button" class="btn btn-primary" @click="salvar()">Salvar</button>
             </template>
         </modal-component>
+        <!-- Final do modal de inclusao de marca -->
+
+        <!-- Inicio do modal de visualização de marca-->
+        <modal-component id="modalMarcaVisualizar" titulo="Visualizar marca">
+            <template v-slot:alertas></template>
+
+            <template v-slot:conteudo>Teste</template>
+
+            <template v-slot:rodape>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </template>
+
+        </modal-component>
+
+        <!-- Fim do modal de visualização de marca -->
     </div>
 </template>
 
@@ -153,13 +168,13 @@ export default {
                     if (filtro !== '') {
                         filtro += ";"
                     }
-                    filtro += chave+':like:'+this.busca[chave]
+                    filtro += chave + ':like:' + this.busca[chave]
                 }
             }
             if (filtro != '') {
                 this.urlPaginacao = 'page1'
-                this.urlFiltro = '&filtro='+filtro
-            }else{
+                this.urlFiltro = '&filtro=' + filtro
+            } else {
                 this.urlFiltro = ''
             }
             this.carregarLista()
