@@ -7,16 +7,19 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
+import Vue from 'vue';
+/* importando e configurando o vuex*/
 import Vuex from 'vuex'
+
 Vue.use(Vuex)
 
-
 const store = new Vuex.Store({
-    state:{
-        item: {}
+    state: {
+        item: {},
+        transacao:{status:'', mensagem:''}
     }
 })
-
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,7 +42,6 @@ Vue.component('card-component', require('./components/Card.vue').default);
 Vue.component('modal-component', require('./components/Modal.vue').default);
 Vue.component('alert-component', require('./components/Alert.vue').default);
 Vue.component('paginate-component', require('./components/Paginate.vue').default);
-
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
